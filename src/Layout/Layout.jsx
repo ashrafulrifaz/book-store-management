@@ -3,9 +3,11 @@ import Header from "../Components/Header";
 
 const Layout = () => {
     return (
-        <div>
-            <Header />
-            <Outlet />
+        <div className="bg-baground">
+            <div className="max-w-[1300px] mx-auto">
+                <Header />
+                <Outlet />
+            </div>
         </div>
     );
 };

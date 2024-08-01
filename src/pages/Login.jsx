@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
     const email = import.meta.env.VITE_ADMIN_EMAIL;
     const password = import.meta.env.VITE_ADMIN_PASSWORD;
@@ -9,6 +11,7 @@ const Login = () => {
   const onSubmit = data => {
     if(email === data.email && password === data.password){
         console.log('login success');
+        navigate('/home')
     } else {
         console.log('login failed');
     }
