@@ -75,3 +75,23 @@ button {
 .header-btn {
     @apply py-2 px-4 bg-primary text-white rounded-lg font-primary font-bold text-sm cursor-pointer hover:bg-opacity-90
 }
+
+
+/* ADD BOOK PAGE */
+
+.container {
+    @apply border-2 border-border rounded-3xl p-10 bg-secondbg
+}
+
+.add_book h2 {
+    @apply text-4xl font-bold font-primary
+}
+
+.add_book form label {
+    @apply font-primary font-semibold text-[19px]
+}
+
+.add_book form input,
+.add_book form textarea {
+    @apply w-full px-4 py-3 border-2 border-border rounded-xl mt-2 focus:outline-none font-secondary text-[17px]
+}

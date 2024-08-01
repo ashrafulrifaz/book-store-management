@@ -6,7 +6,7 @@ const Header = () => {
             <h2 className="logo">Logo Here</h2>
             <div>
                 <ul>
-                    <NavLink className="nav-item" to={'/home'}>Home</NavLink>
+                    <NavLink className="nav-item" to={'/'}>Home</NavLink>
                     <NavLink className="nav-item" to={'/add-book'}>Add Book</NavLink>
                     <NavLink className="nav-item" to={'/pre-orders'}>Pre-Orders</NavLink>
                     <NavLink className="nav-item" to={'/customers'}>Customers</NavLink>

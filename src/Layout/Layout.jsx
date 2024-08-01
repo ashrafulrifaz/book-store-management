@@ -3,7 +3,7 @@ import Header from "../Components/Header";
 
 const Layout = () => {
     return (
-        <div className="bg-baground">
+        <div className="bg-baground min-h-screen">
             <div className="max-w-[1300px] mx-auto">
                 <Header />
                 <Outlet />
