@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* LOGIN PAGE */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+  
+.login-background {
+    background-image: url('./assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    @apply bg-secondbg p-10 border-2 border-border rounded-3xl w-2/5 mx-auto
+}
+  
+.login-container h2 {
+    @apply text-center text-4xl font-bold font-primary 
+}
+  
+.login-container p {
+    @apply mt-5 text-center font-secondary text-description text-lg
+}
+  
+.form-group label {
+    @apply font-bold font-primary
+}
+  
+.form-group input {
+    @apply w-full px-4 py-2.5 border-[1.5px] border-border rounded-xl mt-2 mb-4 focus:outline-none font-secondary
+}
+  
+button {
+    @apply py-3 w-full bg-primary text-white mt-2.5 rounded-xl font-primary font-semibold text-lg
+}
