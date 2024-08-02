@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
+@import "keep-react/css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,7 +46,7 @@ body, html {
 }
   
 button {
-    @apply py-3 w-full bg-primary text-white mt-2.5 rounded-xl font-primary font-semibold text-lg
+    @apply py-3 w-full bg-primary text-white mt-2.5 rounded-xl font-primary font-semibold text-lg hover:translate-x-2 transition-all
 }
 
 
@@ -56,9 +57,9 @@ button {
     @apply flex items-center justify-between py-4
 }
 
-/* .logo {
-
-} */
+.logo {
+    @apply text-xl font-bold font-primary
+}
 
 .header ul {
     @apply flex gap-5 items-center
@@ -73,7 +74,7 @@ button {
 }
 
 .header-btn {
-    @apply py-2 px-4 bg-primary text-white rounded-lg font-primary font-bold text-sm cursor-pointer hover:bg-opacity-90
+    @apply py-2 px-4 bg-primary text-white rounded-lg font-primary font-bold text-sm cursor-pointer hover:translate-x-2 transition-all
 }
 
 
@@ -83,15 +84,61 @@ button {
     @apply border-2 border-border rounded-3xl p-10 bg-secondbg
 }
 
-.add_book h2 {
+.add_book h2,
+.add_pre_order h2 {
     @apply text-4xl font-bold font-primary
 }
 
-.add_book form label {
-    @apply font-primary font-semibold text-[19px]
+.add_book form label, 
+.add_pre_order form label {
+    @apply font-primary font-semibold text-[19px] block
 }
 
 .add_book form input,
+.add_pre_order form input,
 .add_book form textarea {
     @apply w-full px-4 py-3 border-2 border-border rounded-xl mt-2 focus:outline-none font-secondary text-[17px]
+}
+
+.add_pre_order h3 {
+    @apply text-[22px] font-primary font-semibold
+}
+
+.action_btn {
+    @apply border-2 border-border rounded-xl cursor-pointer hover:border-black transition-all
+}
+
+.action_btn img {
+    @apply w-4 h-4
+}
+
+
+/* HOME PAGE */
+
+.book_card {
+    @apply border-2 border-border py-3 px-4 rounded-xl mt-4
+}
+
+.book_card h2 {
+    @apply font-bold text-xl font-primary
+}
+
+.book_card h3 {
+    @apply font-primary mt-1 font-semibold
+}
+
+.search_btn {
+    @apply flex justify-between items-center rounded-xl border-2 border-third
+}
+
+.search_btn input {
+    @apply w-80 py-2 px-3 rounded-xl focus:outline-none
+}
+
+.search-div {
+    @apply rounded-s-lg p-[9px] cursor-pointer
+}
+
+.cancel-div {
+    @apply rounded-e-lg p-[9px] cursor-pointer bg-red-500
 }

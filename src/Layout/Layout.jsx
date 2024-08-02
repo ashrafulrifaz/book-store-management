@@ -4,7 +4,7 @@ import Header from "../Components/Header";
 const Layout = () => {
     return (
         <div className="bg-baground min-h-screen">
-            <div className="max-w-[1300px] mx-auto">
+            <div className="max-w-[1200px] mx-auto">
                 <Header />
                 <Outlet />
             </div>
