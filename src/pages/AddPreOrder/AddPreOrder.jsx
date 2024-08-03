@@ -9,10 +9,12 @@ const AddPreOrder = () => {
 
     const editionOptions = [
         { value: 'common', label: 'common' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-        { value: 'vanilla', label: 'Vanilla' },
-    ]
+        { value: 'latest', label: 'latest' },
+        { value: '1st', label: '1st' },
+        { value: '2nd', label: '2nd' },
+        { value: '3rd', label: '3rd' },
+        ...Array.from({ length: 27 }, (_, i) => ({ value: `${i + 3}th`, label: `${i + 4}th` })),
+    ];
 
     const conditionOptions = [
         { value: 'new', label: 'new' },

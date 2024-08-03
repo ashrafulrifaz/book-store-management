@@ -58,7 +58,7 @@ button {
 }
 
 .logo {
-    @apply text-xl font-bold font-primary
+    @apply w-32 h-auto
 }
 
 .header ul {
@@ -112,11 +112,15 @@ button {
     @apply w-4 h-4
 }
 
+.css-13cymwt-control {
+    @apply mt-2 !border-2 !border-border !cursor-pointer !rounded-xl px-2 py-1.5
+}
+
 
 /* HOME PAGE */
 
 .book_card {
-    @apply border-2 border-border py-3 px-4 rounded-xl mt-4
+    @apply border-2 border-border py-3 px-4 rounded-xl mt-4 cursor-pointer
 }
 
 .book_card h2 {

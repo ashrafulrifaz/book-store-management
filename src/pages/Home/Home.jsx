@@ -3,9 +3,25 @@ import miniArrowIcon from '../../assets/icons/angle-small-right.png'
 import searchIcon from '../../assets/icons/search.png'
 import crossIcon from '../../assets/icons/cross-small.png'
 import { useState } from 'react';
+import axios from 'axios';
 
 const Home = () => {
     const [activeSearch, setActiveSearch] = useState(false)
+    const [books, setBooks] = useState([])
+    console.log(books);    
+
+    useState(() => {
+        const fetchData = async () => {
+            try {
+              const response = await axios.get('/books.json');
+              setBooks(response.data);
+            } catch (error) {
+                console.log('error');
+            }
+        };
+      
+        fetchData();
+    }, [])
 
     const handleSearch = () => {
         if(activeSearch){
@@ -36,10 +52,12 @@ const Home = () => {
                 </div>
             </div>
             {
-                <div className='book_card'>
-                    <h2>Time Management</h2>
-                    <h3>৳ 500</h3>
-                </div>
+                books?.map((book, idx) => (
+                    <div key={idx} className='book_card'>
+                        <h2>{book?.name}</h2>
+                        <h3>{book.price}</h3>
+                    </div>
+                ))
             }
         </div>
     );
