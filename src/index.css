@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-@import "keep-react/css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -127,7 +126,9 @@ button {
     @apply font-bold text-xl font-primary
 }
 
-.book_card h3 {
+.book_card h3,
+.modal h3,
+.modal p {
     @apply font-primary mt-1 font-semibold
 }
 
@@ -145,4 +146,32 @@ button {
 
 .cancel-div {
     @apply rounded-e-lg p-[9px] cursor-pointer bg-red-500
+}
+
+.modal_container {
+    @apply bg-white bg-opacity-75 fixed top-0 right-0 z-50 h-full w-full flex items-center justify-center
+}
+
+.modal {
+    @apply bg-fourth border-2 border-border border-opacity-40 p-5 rounded-2xl min-w-[35%] max-w-[50%]
+}
+
+.modal h1 {
+    @apply text-xl font-semibold font-primary
+}
+
+.modal h2 {
+    @apply text-2xl font-primary font-semibold capitalize mt-3
+}
+
+.modal h6 {
+    @apply font-semibold font-primary underline underline-offset-8 decoration-secondary decoration-2 mt-4
+}
+
+.delete_btn {
+    @apply border-[#F62929] border-opacity-30 hover:border-[#F62929]
+}
+
+.edit_btn {
+    @apply border-[#2196F3] border-opacity-30 hover:border-[#2196F3]
 }

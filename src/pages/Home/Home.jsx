@@ -4,6 +4,8 @@ import searchIcon from '../../assets/icons/search.png'
 import crossIcon from '../../assets/icons/cross-small.png'
 import { useState } from 'react';
 import axios from 'axios';
+import BookCard from '../../Components/BookCard/BookCard';
+
 
 const Home = () => {
     const [activeSearch, setActiveSearch] = useState(false)
@@ -53,10 +55,7 @@ const Home = () => {
             </div>
             {
                 books?.map((book, idx) => (
-                    <div key={idx} className='book_card'>
-                        <h2>{book?.name}</h2>
-                        <h3>{book.price}</h3>
-                    </div>
+                    <BookCard key={idx} book={book} />
                 ))
             }
         </div>
