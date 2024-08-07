@@ -153,7 +153,7 @@ button {
 }
 
 .modal {
-    @apply bg-fourth border-2 border-border border-opacity-40 p-5 rounded-2xl min-w-[35%] max-w-[50%]
+    @apply bg-fourth border-2 border-border border-opacity-40 p-5 rounded-2xl min-w-[35%] max-w-[50%] max-h-[90%] overflow-y-auto
 }
 
 .modal h1 {

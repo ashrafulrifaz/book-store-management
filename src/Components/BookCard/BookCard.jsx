@@ -2,11 +2,71 @@ import { useState } from "react";
 import crossIcon from '../../assets/icons/cross-small.png'
 import trashIcon from '../../assets/icons/trash.png'
 import editIcon from '../../assets/icons/edit.png'
+import axios from "axios";
+import confetti from "canvas-confetti";
+import { toast } from "sonner";
+import Swal from "sweetalert2";
 
-const BookCard = ({book}) => {
-    const {name, price, description} = book
+const BookCard = ({book, refetch}) => {
+    const {_id, name, price, description} = book
     const [openModal, setOpenModal] = useState(false)
-    console.log(openModal);
+    
+    const EditBook = () => {
+
+    }
+
+    const DeleteBook = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/remove-book/${_id}`)
+                .then((response) => {
+                    if(response?.data?.deletedCount){            
+                        toast.success('Book Deleted Successfully')
+                        handleSuccess()
+                        setOpenModal(false)
+                        refetch()
+                    }
+                })
+            }
+          });
+    }
+
+    const handleSuccess = () => {
+        const end = Date.now() + 3 * 1000; // 3 seconds
+        const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+     
+        const frame = () => {
+          if (Date.now() > end) return;
+     
+          confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 0, y: 0.5 },
+            colors: colors,
+          });
+          confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 1, y: 0.5 },
+            colors: colors,
+          });
+     
+          requestAnimationFrame(frame);
+        };
+     
+        frame();
+    };
     
 
     return (
@@ -23,7 +83,7 @@ const BookCard = ({book}) => {
                             <div className="edit_btn action_btn">
                                 <img src={editIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
                             </div>
-                            <div className="action_btn delete_btn">
+                            <div className="action_btn delete_btn" onClick={() => DeleteBook()}>
                                 <img src={trashIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
                             </div>
                             <div className="action_btn" onClick={() => setOpenModal(false)}>

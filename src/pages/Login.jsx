@@ -10,7 +10,6 @@ const Login = () => {
 
   const onSubmit = data => {
     if(email === data.email && password === data.password){
-        console.log('login success');
         navigate('/home')
     } else {
         console.log('login failed');

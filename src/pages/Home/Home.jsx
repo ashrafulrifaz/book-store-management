@@ -5,25 +5,18 @@ import crossIcon from '../../assets/icons/cross-small.png'
 import { useState } from 'react';
 import axios from 'axios';
 import BookCard from '../../Components/BookCard/BookCard';
-
+import { useQuery } from '@tanstack/react-query';
 
 const Home = () => {
     const [activeSearch, setActiveSearch] = useState(false)
-    const [books, setBooks] = useState([])
-    console.log(books);    
 
-    useState(() => {
-        const fetchData = async () => {
-            try {
-              const response = await axios.get('/books.json');
-              setBooks(response.data);
-            } catch (error) {
-                console.log('error');
-            }
-        };
-      
-        fetchData();
-    }, [])
+    const { data: books = [], isPending , refetch} = useQuery({
+        queryKey: ["books"],
+        queryFn: async () => {
+          const res = await axios.get("http://localhost:3000/all-books");
+          return res.data;
+        },
+    });
 
     const handleSearch = () => {
         if(activeSearch){
@@ -55,7 +48,7 @@ const Home = () => {
             </div>
             {
                 books?.map((book, idx) => (
-                    <BookCard key={idx} book={book} />
+                    <BookCard key={idx} book={book} refetch={refetch} />
                 ))
             }
         </div>
