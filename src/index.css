@@ -187,20 +187,16 @@ button {
     @apply font-primary mt-1 font-semibold
 }
 
-.search_btn {
+.search_container {
     @apply flex justify-between items-center rounded-xl border-2 border-third
 }
 
-.search_btn input {
+.search_container input {
     @apply w-80 py-2 px-3 rounded-xl focus:outline-none
 }
 
 .search-div {
-    @apply rounded-s-lg p-[9px] cursor-pointer
-}
-
-.cancel-div {
-    @apply rounded-e-lg p-[9px] cursor-pointer bg-red-500
+    @apply rounded-s-lg p-[9px] cursor-pointer bg-third
 }
 
 .modal_container {
@@ -230,6 +226,14 @@ button {
 
 .edit_btn {
     @apply border-[#2196F3] border-opacity-30 hover:border-[#2196F3]
+}
+
+.search_list {
+    @apply cursor-pointer p-2 border-b border-border font-semibold text-xl font-primary
+}
+
+.search_list:last-child {
+    @apply border-b-0
 }
 
 

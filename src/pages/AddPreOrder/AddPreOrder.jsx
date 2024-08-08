@@ -12,8 +12,6 @@ const AddPreOrder = () => {
     const [books, setBooks] = useState([{ name: "", quantity: "", edition: "common", condition: "new" }]);
     const [bookName, setBookName] = useState('')
     const today = new Date()
-    console.log(today);
-    
     
     const searchedBook = allBooks?.filter(book => book?.name.toLowerCase().includes(bookName.toLowerCase()))
 

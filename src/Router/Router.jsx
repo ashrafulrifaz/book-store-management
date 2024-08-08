@@ -7,6 +7,7 @@ import Home from "../pages/Home/Home";
 import PreOrders from "../pages/PreOrders/PreOrders";
 import Customers from "../pages/Customers/Customers";
 import CustomerDetails from "../pages/CustomerDetails/CustomerDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = createBrowserRouter([
     {
@@ -15,7 +16,7 @@ const Router = createBrowserRouter([
     },
     {
       path: "/",
-      element: <Layout />,
+      element: <PrivateRoute><Layout /></PrivateRoute>,
       children: [
         {
           path: '/',

@@ -1,19 +1,37 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/Provider";
+import { toast } from "sonner";
 
 const Login = () => {
+    const {login} = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
-
-    const email = import.meta.env.VITE_ADMIN_EMAIL;
-    const password = import.meta.env.VITE_ADMIN_PASSWORD;
+    const [loading, setLoading] = useState(false)
 
   const onSubmit = data => {
-    if(email === data.email && password === data.password){
-        navigate('/home')
-    } else {
-        console.log('login failed');
-    }
+    setLoading(true)
+    const email = data.email
+    const password = data.password
+
+    login(email, password)
+        .then(() => {
+            setLoading(false)
+            navigate('/')
+            toast.success('Login Success', {
+               position: "top-center",
+               autoClose: 2000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "colored",
+            });
+        })
+        .then(error => console.log(error))
+    setLoading(false)
   };
 
     return (

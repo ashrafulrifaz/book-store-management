@@ -6,12 +6,11 @@ import PreOrderCard from '../../Components/PreOrderCard/PreOderCard';
 
 const PreOrders = () => {
     const [allPreOrders] = usePreOrders()
-    console.log(allPreOrders);    
 
     return (
         <div className="container mt-5 !p-6 pre_order">
             <div className="flex items-center justify-between">
-                <h2>Pre-Orders</h2>
+                <h2 className='mb-5'>Pre-Orders</h2>
                 <div className='flex items-center gap-3'>
                     <div className="action_btn">
                         <img src={filterIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
@@ -21,18 +20,18 @@ const PreOrders = () => {
                     </Link>
                 </div>
             </div>
-            {
-                allPreOrders ? 
-                allPreOrders?.map((preOrder, idx) => (
-                    <div key={idx} className='grid grid-cols-2 gap-5'>
-                        <PreOrderCard preOrder={preOrder} />
+            <div className='grid grid-cols-2 gap-5'>
+                {
+                    allPreOrders ? 
+                    allPreOrders?.map((preOrder, idx) => (
+                        <PreOrderCard key={idx} preOrder={preOrder} />
+                    ))
+                    :
+                    <div className="flex justify-center">
+                        <div className='loader'></div>
                     </div>
-                ))
-                :
-                <div className="flex justify-center">
-                    <div className='loader'></div>
-                </div>
-            }
+                }
+            </div>
         </div>
     );
 };

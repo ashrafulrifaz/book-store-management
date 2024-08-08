@@ -5,7 +5,7 @@ const PreOrderCard = ({preOrder}) => {
 
     return (
         <Link to='/'>
-            <div className='book_card'>
+            <div className='book_card !mt-0'>
                 <h2>{name}</h2>
                 <h3>৳{price}</h3>
             </div>
