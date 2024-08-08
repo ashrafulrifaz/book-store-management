@@ -6,17 +6,11 @@ import { useState } from 'react';
 import axios from 'axios';
 import BookCard from '../../Components/BookCard/BookCard';
 import { useQuery } from '@tanstack/react-query';
+import useBooks from '../../Hooks/useBooks';
 
 const Home = () => {
     const [activeSearch, setActiveSearch] = useState(false)
-
-    const { data: books = [], isPending , refetch} = useQuery({
-        queryKey: ["books"],
-        queryFn: async () => {
-          const res = await axios.get("http://localhost:3000/all-books");
-          return res.data;
-        },
-    });
+    const [allBooks, refetch] = useBooks()
 
     const handleSearch = () => {
         if(activeSearch){
@@ -47,9 +41,14 @@ const Home = () => {
                 </div>
             </div>
             {
-                books?.map((book, idx) => (
+                allBooks ? 
+                allBooks?.map((book, idx) => (
                     <BookCard key={idx} book={book} refetch={refetch} />
                 ))
+                :
+                <div className="flex justify-center">
+                    <div className='loader'></div>
+                </div>
             }
         </div>
     );

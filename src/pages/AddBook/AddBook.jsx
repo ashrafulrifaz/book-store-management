@@ -69,7 +69,7 @@ const AddBook = () => {
                     </div>
                     <div className="mt-5">
                         <label>Book Price</label>
-                        <input type="text" required placeholder="Enter book price here" {...register("price", { required: true })} />
+                        <input type="number" required placeholder="Enter book price here" {...register("price", { required: true })} />
                     </div>
                     <div className="mt-5 mb-3">
                         <label>Description</label>

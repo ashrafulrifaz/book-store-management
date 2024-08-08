@@ -4,6 +4,9 @@ import Login from "../pages/Login";
 import AddBook from "../pages/AddBook/AddBook";
 import AddPreOrder from "../pages/AddPreOrder/AddPreOrder";
 import Home from "../pages/Home/Home";
+import PreOrders from "../pages/PreOrders/PreOrders";
+import Customers from "../pages/Customers/Customers";
+import CustomerDetails from "../pages/CustomerDetails/CustomerDetails";
 
 const Router = createBrowserRouter([
     {
@@ -25,6 +28,18 @@ const Router = createBrowserRouter([
         {
           path: '/add-preorder',
           element: <AddPreOrder />
+        },
+        {
+          path: '/pre-orders',
+          element: <PreOrders />
+        },
+        {
+          path: '/customers',
+          element: <Customers />
+        },
+        {
+          path: '/customers/:customerName',
+          element: <CustomerDetails />
         },
       ]
     }

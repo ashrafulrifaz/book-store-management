@@ -66,8 +66,7 @@ const BookCard = ({book, refetch}) => {
         };
      
         frame();
-    };
-    
+    };    
 
     return (
         <div>
