@@ -21,7 +21,7 @@ const EditBook = () => {
         }
         
         
-        axios.patch(`http://localhost:3000/edit-book/${id}`, updatedBook)
+        axios.patch(`https://nstuonlinebookshop-server.vercel.app/edit-book/${id}`, updatedBook)
             .then(res => {
                 if(res?.data){          
                     toast.success('Book Updated Successfully')

@@ -47,7 +47,7 @@ const EditPreOrder = () => {
             orderedBooks: books
         }        
         
-        axios.patch(`http://localhost:3000/preorder/${_id}`, updatePreOrder)
+        axios.patch(`https://nstuonlinebookshop-server.vercel.app/preorder/${_id}`, updatePreOrder)
             .then(res => {
                 if(res?.data){          
                     console.log(res.data);                    
