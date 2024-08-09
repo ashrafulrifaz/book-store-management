@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
 const PreOrderCard = ({preOrder}) => {
-    const {_id, name, price, description} = preOrder || {}    
+    const {name, quantity} = preOrder || {}    
 
     return (
-        <Link to='/'>
-            <div className='book_card !mt-0'>
-                <h2>{name}</h2>
-                <h3>৳{price}</h3>
+        <Link to={`/pre-order/${name}`}>
+            <div className='book_card !mt-0 h-full'>
+                <h2 className="!text-xl">{name}</h2>
+                <h3><span className="font-bold">Quantity:</span> {quantity}</h3>
             </div>
         </Link>
     );

@@ -26,7 +26,7 @@ const BookCard = ({book, refetch}) => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://nstuonlinebookshop-server.vercel.app/remove-book/${_id}`)
+                axios.delete(`http://localhost:3000/remove-book/${_id}`)
                 .then((response) => {
                     if(response?.data?.deletedCount){            
                         toast.success('Book Deleted Successfully')

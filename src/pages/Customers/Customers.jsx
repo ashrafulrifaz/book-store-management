@@ -3,6 +3,8 @@ import usePreOrders from "../../Hooks/userPreOrders";
 
 const Customers = () => {
     const [allPreOrders] = usePreOrders()
+    const RecentOrders = allPreOrders?.sort((a, b) => new Date(b.date) - new Date(a.date))
+    
 
     return (
         <div className="container mt-5 !p-6 customers">
@@ -10,7 +12,7 @@ const Customers = () => {
             <div className='grid grid-cols-2 gap-5'>
                 {
                     allPreOrders ? 
-                    allPreOrders?.map((customer, idx) => (
+                    RecentOrders?.map((customer, idx) => (
                             <CustomerCard key={idx} customer={customer} />
                     ))
                     :

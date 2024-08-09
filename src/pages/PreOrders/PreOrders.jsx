@@ -1,11 +1,11 @@
 import filterIcon from '../../assets/icons/filter.png'
 import newIcon from '../../assets/icons/add-document.png'
 import { Link } from 'react-router-dom';
-import usePreOrders from '../../Hooks/userPreOrders';
 import PreOrderCard from '../../Components/PreOrderCard/PreOderCard';
+import useOrderedBook from '../../Hooks/useOrderedBook';
 
 const PreOrders = () => {
-    const [allPreOrders] = usePreOrders()
+    const [combinedBooks] = useOrderedBook()
 
     return (
         <div className="container mt-5 !p-6 pre_order">
@@ -20,10 +20,10 @@ const PreOrders = () => {
                     </Link>
                 </div>
             </div>
-            <div className='grid grid-cols-2 gap-5'>
+            <div className='grid grid-cols-2 gap-5 mt-5'>
                 {
-                    allPreOrders ? 
-                    allPreOrders?.map((preOrder, idx) => (
+                    combinedBooks ? 
+                    combinedBooks?.map((preOrder, idx) => (
                         <PreOrderCard key={idx} preOrder={preOrder} />
                     ))
                     :
