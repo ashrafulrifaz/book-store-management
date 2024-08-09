@@ -4,6 +4,8 @@ import useBooks from "../../Hooks/useBooks";
 const EditOrderBook = ({index, book, books, setBooks, editionOptions, conditionOptions,}) => {    
     const [allBooks] = useBooks()
     const [bookName, setBookName] = useState('')
+    console.log(book.quantity);
+    
     
     const searchedBook = allBooks?.filter(book => book?.name.toLowerCase().includes(bookName.toLowerCase()))
 
@@ -37,7 +39,7 @@ const EditOrderBook = ({index, book, books, setBooks, editionOptions, conditionO
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
                 <div className="cols-span-1 md:col-span-2 relative">
                     <label>Book Name</label>
-                    <input type="text" required placeholder="Enter book name here" onChange={(e) => setBookName(e.target.value)} defaultValue={book?.name || bookName} />
+                    <input type="text" required placeholder="Enter book name here" onChange={(e) => setBookName(e.target.value)} value={book.name || bookName} />
                     <div className={`${bookName ? 'book' : 'hidden'} absolute top-24 bg-white left-0 w-full max-h-48 border-2 border-border rounded-xl p-2 overflow-y-auto`}>
                         {
                             searchedBook?.length > 0 ?
@@ -50,7 +52,7 @@ const EditOrderBook = ({index, book, books, setBooks, editionOptions, conditionO
                 </div>
                 <div>
                     <label>Quantity</label>
-                    <input type="number" required placeholder="Enter book name here" onChange={(e) => handleQuantity(e, index)} defaultValue={book?.quantity} />
+                    <input type="number" required placeholder="Enter book name here" onChange={(e) => handleQuantity(e, index)} value={book.quantity} />
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mt-3 md:mt-5">

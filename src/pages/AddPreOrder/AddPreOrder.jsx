@@ -136,7 +136,7 @@ const AddPreOrder = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
                                     <div className="col-span-1 md:col-span-2 relative">
                                         <label>Book Name</label>
-                                        <input type="text" required placeholder="Enter book name here" onChange={(e) => setBookName(e.target.value)} />
+                                        <input type="text" required placeholder="Enter book name here" value={book.name} onChange={(e) => setBookName(e.target.value)} />
                                         <div className={`${bookName ? 'book' : 'hidden'} absolute top-24 bg-white left-0 w-full max-h-48 border-2 border-border rounded-xl p-2 overflow-y-auto`}>
                                             {
                                                 searchedBook?.length > 0 ?
