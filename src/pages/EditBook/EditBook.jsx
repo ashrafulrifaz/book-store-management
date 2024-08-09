@@ -65,22 +65,22 @@ const EditBook = () => {
     };
 
     return (
-        <div className="edit_book container mt-5 ">
+        <div className="edit_book container mt-3 md:mt-5 ">
             <h2>Edit {currentBook?.name}{"'"}s Info</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="mt-7">
+                <div className="mt-4 md:mt-7">
                     <label>Book Name</label>
                     <input type="text" required placeholder="Enter book name here" {...register("name")} defaultValue={currentBook?.name} />
                 </div>
-                <div className="mt-5">
+                <div className="mt-3 md:mt-5">
                     <label>Book Price</label>
                     <input type="number" required placeholder="Enter book price here" {...register("price")} defaultValue={currentBook?.price} />
                 </div>
-                <div className="mt-5 mb-3">
+                <div className="mt-3 md:mt-5 mb-0 md:mb-3">
                     <label>Description</label>
                     <textarea type="text" required placeholder="Enter book description here" {...register("description")} defaultValue={currentBook?.description} />
                 </div>
-                <button className="w-1/2">Update Book Info</button>
+                <button className="w-full lg:w-1/2">Update Book Info</button>
             </form>
         </div>
     );

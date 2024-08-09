@@ -92,14 +92,14 @@ const EditPreOrder = () => {
     };
 
     return (
-        <div className="container !p-6 add_pre_order">
+        <div className="container !p-4 md:!p-6 add_pre_order">
             <h2>Edit {customerName}{"'"}s pre order Info</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="mt-7">
+                <div className="mt-3 md:mt-7">
                     <label>Customer Name</label>
                     <input type="text" required placeholder="Enter customer name here" {...register("name")} defaultValue={customerName} />
                 </div>
-                <div className="mt-5">
+                <div className="mt-3 md:mt-5">
                     <label>Customer Number</label>
                     <input type="number" required placeholder="Enter book price here" {...register("number")} defaultValue={customerNumber} />
                 </div>
@@ -114,7 +114,7 @@ const EditPreOrder = () => {
                         <EditOrderBook key={index} index={index} book={book} editionOptions={editionOptions} books={books} setBooks={setBooks} conditionOptions={conditionOptions} />
                     ))
                 }
-                <button className="w-1/2">Update Pre Order</button>
+                <button className="w-full lg:w-1/2">Update Pre Order</button>
             </form>
         </div>
     );

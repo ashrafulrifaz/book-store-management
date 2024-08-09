@@ -13,7 +13,7 @@ const Layout = () => {
                     <div className="loader"></div>
                 </div>
             </div>
-            <div className="max-w-[1200px] mx-auto">
+            <div className="max-w-[90%] lg:max-w-[1200px] mx-auto">
                 <Header />
                 <Outlet />
             </div>

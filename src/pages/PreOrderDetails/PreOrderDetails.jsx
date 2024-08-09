@@ -18,11 +18,9 @@ const PreOrderDetails = () => {
         orderedBooks: order.orderedBooks.filter(book => book.name === name)
     }));
     
-    console.log(filteredBooks);
-    
 
     return (
-        <div className="container !p-6 customer_details">
+        <div className="container !p-4 md:!p-6 customer_details">
             <h2 className="mb-1">{name} order List</h2>      
             <div className="flex items-end gap-4">
                 <h6 className="mt-0">Price</h6>
@@ -30,7 +28,7 @@ const PreOrderDetails = () => {
             </div>          
             <h6 className="mt-2 text-lg">Order List</h6>
             <div className="table_container">
-                <table>
+                <table className="responsive-table">
                     <thead className="text-left">
                         <tr>
                             <th>Customer Name</th>

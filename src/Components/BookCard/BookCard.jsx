@@ -11,10 +11,6 @@ import Swal from "sweetalert2";
 const BookCard = ({book, refetch}) => {
     const {_id, name, price, description} = book
     const [openModal, setOpenModal] = useState(false)
-    
-    const EditBook = () => {
-
-    }
 
     const DeleteBook = () => {
         Swal.fire({
@@ -81,13 +77,13 @@ const BookCard = ({book, refetch}) => {
                         <h1>Book Info</h1>
                         <div className="flex gap-3">
                             <Link to={`/edit-book/${_id}`} className="edit_btn action_btn">
-                                <img src={editIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
+                                <img src={editIcon} className='w-4 md:!w-[22px] h-4 md:!h-[22px] m-1.5 md:m-2' alt="" />
                             </Link>
                             <div className="action_btn delete_btn" onClick={() => DeleteBook()}>
-                                <img src={trashIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
+                                <img src={trashIcon} className='w-4 md:!w-[22px] h-4 md:!h-[22px] m-1.5 md:m-2' alt="" />
                             </div>
                             <div className="action_btn" onClick={() => setOpenModal(false)}>
-                                <img src={crossIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
+                                <img src={crossIcon} className='w-4 md:!w-[22px] h-4 md:!h-[22px] m-1.5 md:m-2' alt="" />
                             </div>
                         </div>
                     </div>

@@ -7,9 +7,9 @@ const Customers = () => {
     
 
     return (
-        <div className="container mt-5 !p-6 customers">
+        <div className="container mt-5 !p-4 md:!p-6 customers">
             <h2 className="mb-5">Customers</h2>            
-            <div className='grid grid-cols-2 gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5'>
                 {
                     allPreOrders ? 
                     RecentOrders?.map((customer, idx) => (

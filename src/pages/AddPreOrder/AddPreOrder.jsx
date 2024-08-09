@@ -132,9 +132,9 @@ const AddPreOrder = () => {
                     </div>
                     {
                         books?.map((book, index) => (
-                            <div key={index} className="p-5 border-2 rounded-xl mt-5 bg-baground mb-5">
-                                <div className="grid grid-cols-3 gap-5">
-                                    <div className="col-span-2 relative">
+                            <div key={index} className="p-3 md:p-5 border-2 rounded-xl mt-5 bg-baground mb-3 md:mb-5">
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
+                                    <div className="col-span-1 md:col-span-2 relative">
                                         <label>Book Name</label>
                                         <input type="text" required placeholder="Enter book name here" onChange={(e) => setBookName(e.target.value)} />
                                         <div className={`${bookName ? 'book' : 'hidden'} absolute top-24 bg-white left-0 w-full max-h-48 border-2 border-border rounded-xl p-2 overflow-y-auto`}>
@@ -152,7 +152,7 @@ const AddPreOrder = () => {
                                         <input type="number" required placeholder="Enter book name here" onChange={(e) => handleQuantity(e, index)} />
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-2 gap-5 mt-5">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mt-3 md:mt-5">
                                     <div>
                                         <label>Edition</label>
                                         <select onChange={(e) => handleEdition(e, index)}>
@@ -164,7 +164,7 @@ const AddPreOrder = () => {
                                         </select>
                                     </div>
                                     <div>
-                                        <label>Edition</label>
+                                        <label>Condition</label>
                                         <select onChange={(e) => handleCondition(e, index)}>
                                             {
                                                 conditionOptions?.map((condition, idx) => (
@@ -177,7 +177,7 @@ const AddPreOrder = () => {
                             </div>
                         ))
                     }
-                    <button className="w-1/2">Add Pre Order</button>
+                    <button className="w-full md:w-1/2">Add Pre Order</button>
                 </form>
             </div>
         </div>

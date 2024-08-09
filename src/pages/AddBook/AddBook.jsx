@@ -61,23 +61,23 @@ const AddBook = () => {
     };
 
     return (
-        <div className="py-6 add_book">
+        <div className="py-4 md:py-6 add_book">
             <div className="container">
                 <h2>Add a new book</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="mt-7">
+                    <div className="mt-4 md:mt-7">
                         <label>Book Name</label>
                         <input type="text" required placeholder="Enter book name here" {...register("name", { required: true })} />
                     </div>
-                    <div className="mt-5">
+                    <div className="mt-3 md:mt-5">
                         <label>Book Price</label>
                         <input type="number" required placeholder="Enter book price here" {...register("price", { required: true })} />
                     </div>
-                    <div className="mt-5 mb-3">
+                    <div className="mt-3 md:mt-5 mb-1 md:mb-3">
                         <label>Description</label>
                         <textarea type="text" required placeholder="Enter book description here" {...register("description", { required: true })} />
                     </div>
-                    <button className="w-1/2">Add Book</button>
+                    <button className="w-full lg:w-1/2">Add Book</button>
                 </form>
             </div>
         </div>
