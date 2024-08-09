@@ -1,13 +1,11 @@
 import filterIcon from '../../assets/icons/filter.png'
 import miniArrowIcon from '../../assets/icons/angle-small-right.png'
 import searchIcon from '../../assets/icons/search.png'
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import BookCard from '../../Components/BookCard/BookCard';
 import useBooks from '../../Hooks/useBooks';
-import { AuthContext } from '../../Provider/Provider';
 
 const Home = () => {
-    const {user} = useContext(AuthContext)
     const [allBooks, refetch] = useBooks()
     const [bookName, setBookName] = useState('')
     const [showFilter, setShowFilter] = useState(false)
@@ -18,8 +16,6 @@ const Home = () => {
         {"name": "best selling"},
         {"name": "price"},
     ]
-
-    console.log(!!user);
     
 
     const searchedBook = allBooks?.filter(book => book?.name.toLowerCase().includes(bookName.toLowerCase()))

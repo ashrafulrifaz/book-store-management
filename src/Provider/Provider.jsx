@@ -8,6 +8,7 @@ export const AuthContext = createContext(null)
 const Provider = ({children}) => {
     const [isLoading, setIsLoading] = useState(true)
     const [user, setUser] = useState(null)
+    const [showLoding, setShowLoading] = useState(true)
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -28,20 +29,11 @@ const Provider = ({children}) => {
     const signOutUser = () => {
         signOut(auth)
         .then(() => {
-           toast.success('Logout Successfully', {
-                position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-           });
+           toast.success('Logout Successfully');
         })
     }
 
-    const info = {user, setUser, login, signOutUser, isLoading}
+    const info = {user, setUser, login, signOutUser, isLoading, showLoding, setShowLoading}
 
     return (
         <AuthContext.Provider value={info}>

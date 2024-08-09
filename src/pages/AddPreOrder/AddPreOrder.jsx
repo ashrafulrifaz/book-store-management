@@ -5,12 +5,14 @@ import useBooks from "../../Hooks/useBooks";
 import axios from "axios";
 import { toast } from "sonner";
 import confetti from "canvas-confetti";
+import { useNavigate } from "react-router-dom";
 
 const AddPreOrder = () => {
     const { register, handleSubmit } = useForm();
     const [allBooks] = useBooks()
     const [books, setBooks] = useState([{ name: "", quantity: "", edition: "common", condition: "new" }]);
     const [bookName, setBookName] = useState('')
+    const navigate = useNavigate();
     const today = new Date()
     
     const searchedBook = allBooks?.filter(book => book?.name.toLowerCase().includes(bookName.toLowerCase()))
@@ -71,6 +73,7 @@ const AddPreOrder = () => {
                 if(res?.data){                        
                     toast.success('Pre-Order Added Successfully')
                     handleSuccess()
+                    navigate('/pre-orders')
                 }                
             })
             .catch((error) => {

@@ -5,7 +5,7 @@ const OrderTableRow = ({books, order, price}) => {
     
 
     return (
-        <tr className="border-t-2 border-border">
+        <tr className="border-t-2 border-secondary">
             <td className="capitalize">{customerName}</td>
             <td>{edition}</td>
             <td>{condition}</td>

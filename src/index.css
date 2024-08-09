@@ -123,8 +123,8 @@ button {
     @apply font-primary text-[17px] font-semibold text-gray-700
 }
 
-.header ul li a .active {
-    @apply !bg-primary
+.active_nav {
+    @apply bg-secondary py-0.5 px-2 rounded-lg
 }
 
 .header-btn {
@@ -178,7 +178,7 @@ button {
 /* HOME PAGE */
 
 .book_card {
-    @apply border-2 border-border py-3 px-4 rounded-xl mt-4 cursor-pointer
+    @apply border-2 border-border py-3 px-4 rounded-xl mt-4 cursor-pointer hover:border-primary hover:border-opacity-50
 }
 
 .book_card h2 {
@@ -249,12 +249,16 @@ button {
     @apply text-2xl font-primary font-bold capitalize
 }
 
+.table_container {
+    @apply border-2 border-secondary mt-5 rounded-lg
+}
+
 select {
     @apply w-full mt-2 border-2 border-border rounded-xl focus:outline-none p-3
 }
 
 .customer_details table {
-    @apply w-full border-2 border-border mt-5
+    @apply w-full 
 }
 
 .customer_details table th,

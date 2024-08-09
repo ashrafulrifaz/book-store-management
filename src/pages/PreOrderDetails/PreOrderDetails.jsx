@@ -29,25 +29,27 @@ const PreOrderDetails = () => {
                 <p className="capitalize">{currentBook?.price}</p>
             </div>          
             <h6 className="mt-2 text-lg">Order List</h6>
-            <table>
-                <thead className="text-left">
-                    <tr>
-                        <th>Customer Name</th>
-                        <th>Edition</th>
-                        <th>Condition</th>
-                        <th>Quantity</th>
-                        <th>Total Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        filteredBooks.map((order, index) => (
-                            order.orderedBooks.map((book, idx) => (
-                            <OrderTableRow key={`${index}-${idx}`} order={order} books={book} price={currentBook?.price} />
-                        ))
-                    ))}
-                </tbody>
-            </table>
+            <div className="table_container">
+                <table>
+                    <thead className="text-left">
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Edition</th>
+                            <th>Condition</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            filteredBooks.map((order, index) => (
+                                order.orderedBooks.map((book, idx) => (
+                                <OrderTableRow key={`${index}-${idx}`} order={order} books={book} price={currentBook?.price} />
+                            ))
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

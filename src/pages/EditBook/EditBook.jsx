@@ -1,11 +1,12 @@
 import axios from "axios";
 import confetti from "canvas-confetti";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import useBooks from "../../Hooks/useBooks";
 
 const EditBook = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
     const [allBooks] = useBooks()
     const {id} = useParams()
@@ -25,6 +26,7 @@ const EditBook = () => {
                 if(res?.data){          
                     toast.success('Book Updated Successfully')
                     handleSuccess()      
+                    navigate('/')
                 }                
             })
             .catch((error) => {

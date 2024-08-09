@@ -1,19 +1,44 @@
 import filterIcon from '../../assets/icons/filter.png'
+import miniArrowIcon from '../../assets/icons/angle-small-right.png'
 import newIcon from '../../assets/icons/add-document.png'
 import { Link } from 'react-router-dom';
 import PreOrderCard from '../../Components/PreOrderCard/PreOderCard';
 import useOrderedBook from '../../Hooks/useOrderedBook';
+import { useState } from 'react';
 
 const PreOrders = () => {
     const [combinedBooks] = useOrderedBook()
+    const [showFilter, setShowFilter] = useState(false)
+    const [currentFilter, setCurrentFilter] = useState('recent')
+
+    const filterItems = [
+        {"name": "quantity"},
+        {"name": "recent"}
+    ]
+
+    const filteredItem = currentFilter === 'quantity' ? combinedBooks?.sort((a, b) => b.quantity - a.quantity) : combinedBooks
 
     return (
         <div className="container mt-5 !p-6 pre_order">
             <div className="flex items-center justify-between">
                 <h2 className='mb-5'>Pre-Orders</h2>
                 <div className='flex items-center gap-3'>
-                    <div className="action_btn">
-                        <img src={filterIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
+                    <div className='flex gap-2 items-center'>
+                        <div className={`${showFilter ? 'opacity-100' : 'opacity-0'} flex gap-2 items-center transition-all duration-500`}>
+                            {
+                                filterItems?.map((item, idx) => (
+                                    <div key={idx} className={`action_btn ${currentFilter && currentFilter == item?.name ? 'bg-primary !border-primary text-white' : 'hover:border-primary'}`} onClick={() => setCurrentFilter(item?.name)}>
+                                        <h4 className='capitalize font-primary font-semibold my-2 mx-3'>{item.name}</h4>
+                                    </div>
+                                ))
+                            }  
+                            <div>
+                                <img src={miniArrowIcon} className={`w-5 h-5 transition-all duration-500 ${showFilter ? 'rotate-180' : 'rotate-0'}`} alt="" />
+                            </div>
+                        </div>     
+                        <div className={`${showFilter ? '!border-primary' : ''} action_btn hover:border-primary`} onClick={() => setShowFilter(!showFilter)}>
+                            <img src={filterIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
+                        </div>             
                     </div>
                     <Link to="/add-preorder" className="action_btn">
                         <img src={newIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
@@ -23,7 +48,7 @@ const PreOrders = () => {
             <div className='grid grid-cols-2 gap-5 mt-5'>
                 {
                     combinedBooks ? 
-                    combinedBooks?.map((preOrder, idx) => (
+                    filteredItem?.map((preOrder, idx) => (
                         <PreOrderCard key={idx} preOrder={preOrder} />
                     ))
                     :

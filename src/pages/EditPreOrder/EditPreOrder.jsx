@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import usePreOrders from "../../Hooks/userPreOrders";
 import confetti from "canvas-confetti";
 import axios from "axios";
@@ -9,15 +9,13 @@ import { useEffect, useState } from "react";
 import EditOrderBook from "./EditOrderBook";
 
 const EditPreOrder = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
     const {id} = useParams()
     const [allPreOrders] = usePreOrders()    
     const [books, setBooks] = useState([{ name: "", quantity: "1", edition: "common", condition: "new" }]);
     const currentCustomer = allPreOrders?.find(customer => customer?._id === id) 
-    const {customerName, customerNumber, date, _id, orderedBooks} = currentCustomer || {}
-
-    console.log(books);
-    
+    const {customerName, customerNumber, date, _id, orderedBooks} = currentCustomer || {}    
 
     useEffect(() => {
         setBooks(orderedBooks)
@@ -55,6 +53,7 @@ const EditPreOrder = () => {
                     console.log(res.data);                    
                     toast.success('Pre-Order Updated Successfully')
                     handleSuccess()
+                    navigate('/pre-orders')
                 }                
             })
             .catch((error) => {

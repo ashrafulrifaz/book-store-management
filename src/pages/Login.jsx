@@ -19,16 +19,7 @@ const Login = () => {
         .then(() => {
             setLoading(false)
             navigate('/')
-            toast.success('Login Success', {
-               position: "top-center",
-               autoClose: 2000,
-               hideProgressBar: false,
-               closeOnClick: true,
-               pauseOnHover: true,
-               draggable: true,
-               progress: undefined,
-               theme: "colored",
-            });
+            toast.success('Login Success');
         })
         .then(error => console.log(error))
     setLoading(false)

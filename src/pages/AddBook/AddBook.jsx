@@ -2,12 +2,13 @@ import axios from "axios";
 import confetti from "canvas-confetti";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const AddBook = () => {
     const { register, handleSubmit } = useForm();
     const confettiRef = useRef(null);
+    const navigate = useNavigate();
 
     const onSubmit = data => {
         const newBook = {
@@ -21,6 +22,7 @@ const AddBook = () => {
                 if(res?.data){          
                     toast.success('Book Added Successfully')
                     handleSuccess()      
+                    navigate('/')
                 }                
             })
             .catch((error) => {

@@ -6,7 +6,7 @@ const TableRow = ({books, idx}) => {
     const currentBook = allBooks?.find(book => book.name === name)    
 
     return (
-        <tr className="border-t-2 border-border">
+        <tr className="border-t-2 border-secondary">
             <td>{idx + 1}</td>
             <td>{name}</td>
             <td>{edition}</td>

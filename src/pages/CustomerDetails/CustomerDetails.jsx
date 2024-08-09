@@ -13,7 +13,7 @@ const CustomerDetails = () => {
             <div className="flex items-center justify-between">
                 <h2 className="mb-1">{customerName}{"'"}<span className="lowercase">s</span> order info</h2>      
                 <div className='flex items-center gap-3'>
-                    <Link to={`/edit-preorder/${currentCustomer?._id}`} className="action_btn">
+                    <Link to={`/edit-preorder/${currentCustomer?._id}`} className="action_btn edit_btn">
                         <img src={editIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
                     </Link>
                 </div>
@@ -29,25 +29,27 @@ const CustomerDetails = () => {
                 </div>
             </div>            
             <h6 className="mt-2 text-lg">Book List</h6>
-            <table>
-                <thead className="text-left">
-                    <tr>
-                        <th>No</th>
-                        <th>Book Name</th>
-                        <th>Edition</th>
-                        <th>Condition</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        currentCustomer?.orderedBooks?.map((books, idx) => (
-                            <TableRow key={idx} books={books} idx={idx} />
-                        ))
-                    }                    
-                </tbody>
-            </table>
+            <div className="table_container">
+                <table>
+                    <thead className="text-left">
+                        <tr>
+                            <th>No</th>
+                            <th>Book Name</th>
+                            <th>Edition</th>
+                            <th>Condition</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            currentCustomer?.orderedBooks?.map((books, idx) => (
+                                <TableRow key={idx} books={books} idx={idx} />
+                            ))
+                        }                    
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
