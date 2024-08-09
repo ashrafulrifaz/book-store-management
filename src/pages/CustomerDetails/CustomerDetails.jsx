@@ -14,11 +14,11 @@ const CustomerDetails = () => {
                 <h2 className="mb-1">{customerName}{"'"}<span className="lowercase">s</span> order info</h2>      
                 <div className='flex items-center gap-3'>
                     <Link to={`/edit-preorder/${currentCustomer?._id}`} className="action_btn edit_btn">
-                        <img src={editIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
+                        <img src={editIcon} className='w-4 lg:!w-[22px] h-4 lg:!h-[22px] m-1.5 lg:m-2' alt="" />
                     </Link>
                 </div>
             </div>      
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-5">
                 <div className="flex items-end gap-4">
                     <h6 className="mt-0">Name</h6>
                     <p className="capitalize">{customerName}</p>
