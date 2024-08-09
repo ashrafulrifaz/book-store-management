@@ -6,10 +6,12 @@ const PrivateRoute = ({children}) => {
    const {user, isLoading} = useContext(AuthContext)
 
    if(isLoading){
-      return <h2>loading</h2>
+      return <div className="flex items-center justify-center h-screen">
+         <div className="loader"></div>
+      </div>
    }
 
-   if(user){
+   if(user?.email){
       return children
    } else {
       return <Navigate to="/login"></Navigate>

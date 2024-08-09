@@ -139,18 +139,22 @@ button {
 }
 
 .add_book h2,
-.add_pre_order h2 {
+.add_pre_order h2,
+.edit_book h2 {
     @apply text-4xl font-bold font-primary
 }
 
 .add_book form label, 
-.add_pre_order form label {
+.add_pre_order form label,
+.edit_book form label {
     @apply font-primary font-semibold text-[19px] block
 }
 
 .add_book form input,
 .add_pre_order form input,
-.add_book form textarea {
+.edit_book form input,
+.add_book form textarea,
+.edit_book form textarea {
     @apply w-full px-4 py-3 border-2 border-border rounded-xl mt-2 focus:outline-none font-secondary text-[17px]
 }
 

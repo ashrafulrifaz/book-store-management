@@ -5,6 +5,7 @@ import editIcon from '../../assets/icons/edit.png'
 import axios from "axios";
 import confetti from "canvas-confetti";
 import { toast } from "sonner";
+import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 
 const BookCard = ({book, refetch}) => {
@@ -25,7 +26,7 @@ const BookCard = ({book, refetch}) => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/remove-book/${_id}`)
+                axios.delete(`https://nstuonlinebookshop-server.vercel.app/remove-book/${_id}`)
                 .then((response) => {
                     if(response?.data?.deletedCount){            
                         toast.success('Book Deleted Successfully')
@@ -79,9 +80,9 @@ const BookCard = ({book, refetch}) => {
                     <div className="flex items-center justify-between">
                         <h1>Book Info</h1>
                         <div className="flex gap-3">
-                            <div className="edit_btn action_btn">
+                            <Link to={`/edit-book/${_id}`} className="edit_btn action_btn">
                                 <img src={editIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
-                            </div>
+                            </Link>
                             <div className="action_btn delete_btn" onClick={() => DeleteBook()}>
                                 <img src={trashIcon} className='!w-[22px] !h-[22px] m-2' alt="" />
                             </div>
