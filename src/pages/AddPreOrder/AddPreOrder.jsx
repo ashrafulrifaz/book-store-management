@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const AddPreOrder = () => {
     const { register, handleSubmit } = useForm();
     const [allBooks] = useBooks()
-    const [books, setBooks] = useState([{ name: "", quantity: "", edition: "common", condition: "new" }]);
+    const [books, setBooks] = useState([{ name: "", quantity: 0, edition: "common", condition: "new" }]);
     const [bookName, setBookName] = useState('')
     const navigate = useNavigate();
     const today = new Date()
@@ -44,7 +44,7 @@ const AddPreOrder = () => {
 
     const handleQuantity = (e, index) => {
         const updatedBooks = [...books];
-        updatedBooks[index] = { ...updatedBooks[index], quantity: e.target.value };
+        updatedBooks[index] = { ...updatedBooks[index], quantity: parseInt(e.target.value) };
         setBooks(updatedBooks);
     };
 
@@ -68,7 +68,7 @@ const AddPreOrder = () => {
             orderedBooks: books
         }        
         
-        axios.post('https://nstuonlinebookshop-server.vercel.app/new-preorder', newPreOrder)
+        axios.post('http://localhost:3000/new-preorder', newPreOrder)
             .then(res => {
                 if(res?.data){                        
                     toast.success('Pre-Order Added Successfully')

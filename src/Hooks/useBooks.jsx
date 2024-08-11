@@ -5,7 +5,7 @@ const useBooks = () => {
     const { data: allBooks = [], isPending , refetch} = useQuery({
       queryKey: ["books"],
       queryFn: async () => {
-        const res = await axios.get("https://nstuonlinebookshop-server.vercel.app/all-books");
+        const res = await axios.get("http://localhost:3000/all-books");
         return res.data;
       },
     });

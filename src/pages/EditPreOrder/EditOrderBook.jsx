@@ -4,7 +4,6 @@ import useBooks from "../../Hooks/useBooks";
 const EditOrderBook = ({index, book, books, setBooks, editionOptions, conditionOptions,}) => {    
     const [allBooks] = useBooks()
     const [bookName, setBookName] = useState('')
-    console.log(book.quantity);
     
     
     const searchedBook = allBooks?.filter(book => book?.name.toLowerCase().includes(bookName.toLowerCase()))
@@ -18,7 +17,7 @@ const EditOrderBook = ({index, book, books, setBooks, editionOptions, conditionO
 
     const handleQuantity = (e, index) => {
         const updatedBooks = [...books];
-        updatedBooks[index] = { ...updatedBooks[index], quantity: e.target.value };
+        updatedBooks[index] = { ...updatedBooks[index], quantity: parseInt(e.target.value) };
         setBooks(updatedBooks);
     };
 
@@ -52,7 +51,7 @@ const EditOrderBook = ({index, book, books, setBooks, editionOptions, conditionO
                 </div>
                 <div>
                     <label>Quantity</label>
-                    <input type="number" required placeholder="Enter book name here" onChange={(e) => handleQuantity(e, index)} value={book.quantity} />
+                    <input type="number" required placeholder="Enter book quantity here" onChange={(e) => handleQuantity(e, index)} value={book.quantity} />
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mt-3 md:mt-5">

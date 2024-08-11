@@ -7,10 +7,12 @@ import confetti from "canvas-confetti";
 import { toast } from "sonner";
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
+import BookTable from "./BookTable";
 
 const BookCard = ({book, refetch}) => {
-    const {_id, name, price, description} = book
+    const {_id, name, price, description, stock} = book
     const [openModal, setOpenModal] = useState(false)
+    const totalStock = stock?.reduce((total, item) => total + item.inStock, 0);
 
     const DeleteBook = () => {
         Swal.fire({
@@ -69,7 +71,8 @@ const BookCard = ({book, refetch}) => {
         <div>
             <div className='book_card' onClick={() => setOpenModal(true)}>
                 <h2>{name}</h2>
-                <h3>৳{price}</h3>
+                <h3>Price: ৳{price}</h3>
+                <h3>Total Stock: {totalStock}</h3>
             </div>
             <div className={`modal_container ${openModal ? 'scale-100 opacity-100 ' : ' scale-0 opacity-0'}`}>
                 <div className='modal'>
@@ -93,6 +96,28 @@ const BookCard = ({book, refetch}) => {
                     <h3 className="!mt-3">৳{price}</h3>
                     <h6>Description</h6>
                     <p className="!mt-3">{description}</p>
+                    <h6>Stock Info</h6>
+                    {
+                        stock?.length > 0 &&
+                        <div className="table_container">
+                            <table className="w-full">
+                                <thead className="text-left">
+                                    <tr>
+                                        <th className="px-2 py-1">Edition</th>
+                                        <th className="px-2 py-1">Condition</th>
+                                        <th className="px-2 py-1">Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        stock?.map((item, idx) => (
+                                            <BookTable key={idx} item={item} />
+                                        ))
+                                    }                    
+                                </tbody>
+                            </table>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

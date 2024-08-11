@@ -36,7 +36,7 @@ const EditPreOrder = () => {
     ]
 
     const handleBookList = () => {
-        setBooks([...books, { name: "", quantity: "", edition: "common", condition: "new" }]);
+        setBooks([...books, { name: "", quantity: 0, edition: "common", condition: "new" }]);
     }    
 
     const onSubmit = data => {        
@@ -46,11 +46,12 @@ const EditPreOrder = () => {
             date: date,
             orderedBooks: books
         }        
+        console.log(updatePreOrder);
         
-        axios.patch(`https://nstuonlinebookshop-server.vercel.app/preorder/${_id}`, updatePreOrder)
+        
+        axios.patch(`http://localhost:3000/preorder/${_id}`, updatePreOrder)
             .then(res => {
-                if(res?.data){          
-                    console.log(res.data);                    
+                if(res?.data){                             
                     toast.success('Pre-Order Updated Successfully')
                     handleSuccess()
                     navigate('/pre-orders')

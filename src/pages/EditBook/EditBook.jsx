@@ -4,24 +4,39 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import useBooks from "../../Hooks/useBooks";
+import { useEffect, useState } from "react";
+import EditBookStock from "./EditBookStock";
+import PlusIcon from "../../assets/icons/plus.png";
 
 const EditBook = () => {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
+    const [stock, setStock] = useState([{ edition: "common", condition: "new", inStock: 0}]);
     const [allBooks] = useBooks()
     const {id} = useParams()
     const currentBook = allBooks?.find(book => book._id === id)
+    console.log(currentBook.stock);
     
+
+    useEffect(() => {
+        setStock(currentBook?.stock || [{ edition: "", condition: "", inStock: 0 }]);
+    }, [currentBook]);     
+
+    const handleStockList = () => {
+        setStock([...stock, { edition: "common", condition: "new", inStock: 0 }]);
+    }  
 
     const onSubmit = data => {
         const updatedBook = {
             name: data.name,
             price: data.price,
+            stock: stock,
             description: data.description
         }
+
+        console.log(updatedBook);                
         
-        
-        axios.patch(`https://nstuonlinebookshop-server.vercel.app/edit-book/${id}`, updatedBook)
+        axios.patch(`http://localhost:3000/edit-book/${id}`, updatedBook)
             .then(res => {
                 if(res?.data){          
                     toast.success('Book Updated Successfully')
@@ -76,6 +91,17 @@ const EditBook = () => {
                     <label>Book Price</label>
                     <input type="number" required placeholder="Enter book price here" {...register("price")} defaultValue={currentBook?.price} />
                 </div>
+                <div className="flex justify-between items-center mt-5 mb-3">
+                    <h3 className="font-primary font-semibold text-[17px] md:text-[19px] block">Book List</h3>
+                    <div className="action_btn" onClick={() => handleStockList()}>
+                        <img src={PlusIcon} alt="" className="m-2" />
+                    </div>
+                </div>
+                {
+                    stock?.map((item, idx) => (
+                        <EditBookStock key={idx} stock={item} setStock={setStock} index={idx} />
+                    ))
+                }
                 <div className="mt-3 md:mt-5 mb-0 md:mb-3">
                     <label>Description</label>
                     <textarea type="text" required placeholder="Enter book description here" {...register("description")} defaultValue={currentBook?.description} />

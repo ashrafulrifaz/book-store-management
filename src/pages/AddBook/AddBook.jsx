@@ -1,12 +1,13 @@
 import axios from "axios";
 import confetti from "canvas-confetti";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const AddBook = () => {
     const { register, handleSubmit } = useForm();
+    const [stock, setStock] = useState([{ edition: "common", condition: "new", inStock: 0}]);
     const confettiRef = useRef(null);
     const navigate = useNavigate();
 
@@ -14,6 +15,7 @@ const AddBook = () => {
         const newBook = {
             name: data.name,
             price: data.price,
+            stock: stock,
             description: data.description
         }
         
