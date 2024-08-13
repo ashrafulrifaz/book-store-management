@@ -1,7 +1,7 @@
 import usePreOrders from "./userPreOrders";
 
 const useOrderedBook = () => {
-    const [allPreOrders] = usePreOrders() 
+    const [allPreOrders, refetch] = usePreOrders() 
       
     const combinedBooks = allPreOrders.reduce((acc, order) => {
       order.orderedBooks.forEach(book => {
@@ -9,13 +9,13 @@ const useOrderedBook = () => {
         if (existingBook) {
           existingBook.quantity += parseInt(book.quantity);
         } else {
-          acc.push({ name: book.name, quantity: parseInt(book.quantity) });
+          acc.push({ name: book.name, edition: book.edition, condition: book.condition, quantity: parseInt(book.quantity) });
         }
       });
       return acc;
     }, []);
 
-    return [combinedBooks];
+    return [combinedBooks, refetch];
 };
 
 export default useOrderedBook;

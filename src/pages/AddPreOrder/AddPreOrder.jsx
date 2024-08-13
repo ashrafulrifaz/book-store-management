@@ -11,7 +11,7 @@ const AddPreOrder = () => {
     const { register, handleSubmit } = useForm();
     const [allBooks] = useBooks()
     const [books, setBooks] = useState([{ name: "", quantity: 0, edition: "common", condition: "new" }]);
-    const [bookName, setBookName] = useState('')
+    const [bookName, setBookName] = useState('');
     const navigate = useNavigate();
     const today = new Date()
     
@@ -32,14 +32,14 @@ const AddPreOrder = () => {
     ]
 
     const handleBookList = () => {
-        setBooks([...books, { name: "", quantity: "", edition: "", condition: "" }]);
+        setBooks([...books, { name: "", quantity: 0, edition: "common", condition: "new" }]);
     }
 
     const handleBookName = (e, index) => {
         const updatedBooks = [...books];
         updatedBooks[index] = { ...updatedBooks[index], name: e.target.textContent };
         setBooks(updatedBooks);
-        setBookName('')
+        setBookName(''); // Reset search input
     };
 
     const handleQuantity = (e, index) => {
@@ -64,6 +64,7 @@ const AddPreOrder = () => {
         const newPreOrder = {
             customerName: data.name,
             customerNumber: data.number,
+            customerAddress: data.address,
             date: today,
             orderedBooks: books
         }        
@@ -122,21 +123,32 @@ const AddPreOrder = () => {
                     </div>
                     <div className="mt-5">
                         <label>Customer Number</label>
-                        <input type="number" required placeholder="Enter book price here" {...register("number", { required: true })} />
+                        <input type="number" required placeholder="Enter customer number here" {...register("number", { required: true })} />
+                    </div>
+                    <div className="mt-5">
+                        <label>Customer Address</label>
+                        <input type="text" required placeholder="Enter customer address here" {...register("address", { required: true })} />
                     </div>
                     <div className="flex justify-between items-center mt-7">
                         <h3>Book List</h3>
-                        <div className="action_btn" onClick={() => handleBookList()}>
-                            <img src={PlusIcon} alt="" className="m-2" />
+                        <div className="action_btn" onClick={handleBookList}>
+                            <img src={PlusIcon} alt="Add another book" className="m-2" />
                         </div>
                     </div>
                     {
                         books?.map((book, index) => (
-                            <div key={index} className="p-3 md:p-5 border-2 rounded-xl mt-5 bg-baground mb-3 md:mb-5">
+                            <div key={index} className="p-3 md:p-5 border-2 rounded-xl mt-5 bg-background mb-3 md:mb-5">
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
                                     <div className="col-span-1 md:col-span-2 relative">
                                         <label>Book Name</label>
-                                        <input type="text" required placeholder="Enter book name here" value={book.name} onChange={(e) => setBookName(e.target.value)} />
+                                        <input 
+                                            type="text" 
+                                            required 
+                                            placeholder="Enter book name here" 
+                                            key={book.name}
+                                            defaultValue={book.name} 
+                                            onChange={(e) => setBookName(e.target.value)} 
+                                        />
                                         <div className={`${bookName ? 'book' : 'hidden'} absolute top-24 bg-white left-0 w-full max-h-48 border-2 border-border rounded-xl p-2 overflow-y-auto`}>
                                             {
                                                 searchedBook?.length > 0 ?
@@ -149,26 +161,26 @@ const AddPreOrder = () => {
                                     </div>
                                     <div>
                                         <label>Quantity</label>
-                                        <input type="number" required placeholder="Enter book name here" onChange={(e) => handleQuantity(e, index)} />
+                                        <input type="number" required placeholder="Enter quantity here" defaultValue={book.quantity} onChange={(e) => handleQuantity(e, index)} />
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 mt-3 md:mt-5">
                                     <div>
                                         <label>Edition</label>
-                                        <select onChange={(e) => handleEdition(e, index)}>
+                                        <select defaultValue={book.edition} onChange={(e) => handleEdition(e, index)}>
                                             {
                                                 editionOptions?.map((edition, idx) => (
-                                                    <option key={idx} value={`${edition?.value}`}>{edition?.label}</option>
+                                                    <option key={idx} value={edition?.value}>{edition?.label}</option>
                                                 ))
                                             }
                                         </select>
                                     </div>
                                     <div>
                                         <label>Condition</label>
-                                        <select onChange={(e) => handleCondition(e, index)}>
+                                        <select defaultValue={book.condition} onChange={(e) => handleCondition(e, index)}>
                                             {
                                                 conditionOptions?.map((condition, idx) => (
-                                                    <option key={idx} value={`${condition?.value}`}>{condition?.label}</option>
+                                                    <option key={idx} value={condition?.value}>{condition?.label}</option>
                                                 ))
                                             }
                                         </select>

@@ -12,7 +12,7 @@ import BookTable from "./BookTable";
 const BookCard = ({book, refetch}) => {
     const {_id, name, price, description, stock} = book
     const [openModal, setOpenModal] = useState(false)
-    const totalStock = stock?.reduce((total, item) => total + item.inStock, 0);
+    const totalStock = stock?.reduce((total, item) => total + item.inStock, 0);    
 
     const DeleteBook = () => {
         Swal.fire({
@@ -24,7 +24,7 @@ const BookCard = ({book, refetch}) => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://nstuonlinebookshop-server.vercel.app/remove-book/${_id}`)
+                axios.delete(`http://localhost:3000/remove-book/${_id}`)
                 .then((response) => {
                     if(response?.data?.deletedCount){            
                         toast.success('Book Deleted Successfully')
@@ -98,7 +98,7 @@ const BookCard = ({book, refetch}) => {
                     <p className="!mt-3">{description}</p>
                     <h6>Stock Info</h6>
                     {
-                        stock?.length > 0 &&
+                        stock[0]?.inStock > 0 ?
                         <div className="table_container">
                             <table className="w-full">
                                 <thead className="text-left">
@@ -106,6 +106,7 @@ const BookCard = ({book, refetch}) => {
                                         <th className="px-2 py-1">Edition</th>
                                         <th className="px-2 py-1">Condition</th>
                                         <th className="px-2 py-1">Quantity</th>
+                                        <th className="px-2 py-1">Location</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -117,6 +118,8 @@ const BookCard = ({book, refetch}) => {
                                 </tbody>
                             </table>
                         </div>
+                        : 
+                        <p className="!mt-3">0 in stock</p>
                     }
                 </div>
             </div>

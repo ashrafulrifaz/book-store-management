@@ -1,9 +1,10 @@
-const TableRow = ({books, idx}) => {
-    const {name, edition, condition, quantity} = books || {}
+
+const PreOrderTable = ({idx, book}) => {
+    const {name, edition, condition, quantity} = book || {}
 
     return (
         <tr className="border-t-2 border-secondary">
-            <td>{idx + 1}</td>
+            <td className="capitalize">{idx + 1}</td>
             <td>{name}</td>
             <td>{edition}</td>
             <td>{condition}</td>
@@ -12,4 +13,4 @@ const TableRow = ({books, idx}) => {
     );
 };
 
-export default TableRow;
+export default PreOrderTable;

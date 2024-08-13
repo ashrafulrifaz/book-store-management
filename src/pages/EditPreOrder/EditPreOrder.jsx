@@ -15,7 +15,7 @@ const EditPreOrder = () => {
     const [allPreOrders] = usePreOrders()    
     const [books, setBooks] = useState([{ name: "", quantity: "1", edition: "common", condition: "new" }]);
     const currentCustomer = allPreOrders?.find(customer => customer?._id === id) 
-    const {customerName, customerNumber, date, _id, orderedBooks} = currentCustomer || {}    
+    const {customerName, customerNumber, customerAddress, date, _id, orderedBooks} = currentCustomer || {}    
 
     useEffect(() => {
         setBooks(orderedBooks)
@@ -43,6 +43,7 @@ const EditPreOrder = () => {
         const updatePreOrder = {
             customerName: data.name ? data.name : customerName,
             customerNumber: data.number ? data.number : customerNumber,
+            customerAddress: data.address ? data.address : customerAddress,
             date: date,
             orderedBooks: books
         }        
@@ -102,7 +103,11 @@ const EditPreOrder = () => {
                 </div>
                 <div className="mt-3 md:mt-5">
                     <label>Customer Number</label>
-                    <input type="number" required placeholder="Enter book price here" {...register("number")} defaultValue={customerNumber} />
+                    <input type="number" required placeholder="Enter customer number here" {...register("number")} defaultValue={customerNumber} />
+                </div>
+                <div className="mt-3 md:mt-5">
+                    <label>Customer Address</label>
+                    <input type="text" required placeholder="Enter customer address here" {...register("address")} defaultValue={customerNumber} />
                 </div>
                 <div className="flex justify-between items-center mt-7">
                     <h3>Book List</h3>

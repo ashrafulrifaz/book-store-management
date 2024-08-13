@@ -11,27 +11,25 @@ import PlusIcon from "../../assets/icons/plus.png";
 const EditBook = () => {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
-    const [stock, setStock] = useState([{ edition: "common", condition: "new", inStock: 0}]);
+    const [stock, setStock] = useState([{ edition: "common", condition: "new", inStock: 0, location: "" }]);
     const [allBooks] = useBooks()
     const {id} = useParams()
     const currentBook = allBooks?.find(book => book._id === id)
-    console.log(currentBook.stock);
-    
 
     useEffect(() => {
-        setStock(currentBook?.stock || [{ edition: "", condition: "", inStock: 0 }]);
+        setStock(currentBook?.stock || [{ edition: "common", condition: "new", inStock: 0, location: "" }]);
     }, [currentBook]);     
 
     const handleStockList = () => {
-        setStock([...stock, { edition: "common", condition: "new", inStock: 0 }]);
+        setStock([...stock, { edition: "common", condition: "new", inStock: 0, location: "" }]);
     }  
 
     const onSubmit = data => {
         const updatedBook = {
-            name: data.name,
-            price: data.price,
+            name: data.name ? data.name : currentBook.name,
+            price: data.price ? data.price : currentBook.price,
             stock: stock,
-            description: data.description
+            description: data.description ? data.description : currentBook.description
         }
 
         console.log(updatedBook);                
@@ -85,14 +83,14 @@ const EditBook = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mt-4 md:mt-7">
                     <label>Book Name</label>
-                    <input type="text" required placeholder="Enter book name here" {...register("name")} defaultValue={currentBook?.name} />
+                    <input type="text" placeholder="Enter book name here" {...register("name")} defaultValue={currentBook?.name} />
                 </div>
                 <div className="mt-3 md:mt-5">
                     <label>Book Price</label>
-                    <input type="number" required placeholder="Enter book price here" {...register("price")} defaultValue={currentBook?.price} />
+                    <input type="number" placeholder="Enter book price here" {...register("price")} defaultValue={currentBook?.price} />
                 </div>
                 <div className="flex justify-between items-center mt-5 mb-3">
-                    <h3 className="font-primary font-semibold text-[17px] md:text-[19px] block">Book List</h3>
+                    <h3 className="font-primary font-semibold text-[17px] md:text-[19px] block">Book Stock List</h3>
                     <div className="action_btn" onClick={() => handleStockList()}>
                         <img src={PlusIcon} alt="" className="m-2" />
                     </div>

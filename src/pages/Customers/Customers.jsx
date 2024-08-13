@@ -8,7 +8,7 @@ const Customers = () => {
 
     return (
         <div className="container mt-5 !p-4 md:!p-6 customers">
-            <h2 className="mb-5">Customers</h2>            
+            <h2 className={`${allPreOrders?.length > 0 ? 'text-left mb-5 ' : 'text-center py-8'}`}>{allPreOrders?.length > 0 ? 'Customers' : 'No Customer Found'}</h2>            
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5'>
                 {
                     allPreOrders ? 
