@@ -21,7 +21,7 @@ const PreOrders = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/pre-orders`)
+                axios.delete(`https://nstuonlinebookshop-server.vercel.app/pre-orders`)
                 .then((response) => {
                     if(response?.data?.deletedCount){            
                         toast.success('Book Deleted Successfully')

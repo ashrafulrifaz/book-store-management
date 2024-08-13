@@ -47,7 +47,7 @@ const AddBook = () => {
         console.log(newBook);
         
         
-        axios.post('http://localhost:3000/new-book', newBook)
+        axios.post('https://nstuonlinebookshop-server.vercel.app/new-book', newBook)
             .then(res => {
                 if(res?.data){          
                     toast.success('Book Added Successfully');

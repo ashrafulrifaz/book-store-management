@@ -69,7 +69,7 @@ const AddPreOrder = () => {
             orderedBooks: books
         }        
         
-        axios.post('http://localhost:3000/new-preorder', newPreOrder)
+        axios.post('https://nstuonlinebookshop-server.vercel.app/new-preorder', newPreOrder)
             .then(res => {
                 if(res?.data){                        
                     toast.success('Pre-Order Added Successfully')
